@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="nome">
+    <button>Here we go</button> 
+
+    <script>
+        var post = function(){
+
+            const url = 'http://localhost:8080/inserir';
+            var valor = document.getElementById('nome').value;
+
+            let data = {
+                "nome" : valor
+            }
+
+            let fetchData = {
+                method: 'POST',
+                body:JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+
+            fetch(url, fetchData)
+            .then(function(resp){
+                if (!resp.ok){
+                    console.log("erro")
+                }
+            });
+        }
+
+        var submitBtn = document.querySelector('button');
+        submitBtn.addEventListener('click', post);
+    
+    </script>
+
+</body>
+</html>

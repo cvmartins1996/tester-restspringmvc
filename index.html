@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>teste</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <h1> Teste </h1>
+    <p id="idCidade"> </p>
+    <p id="teste">  </p>
+
+    
+</head>
+<body>
+    
+    <script>
+        const idCidade = document.getElementById('idCidade');
+        const teste = document.getElementById('teste');
+        const URL_TO_FETCH = 'http://localhost:8080/api-todos';
+
+        fetch(URL_TO_FETCH, {
+            mode:'cors'
+        })
+        .then((resp)  => resp.json())
+        .then(function(data){
+            const myObject = JSON.stringify(data);
+            const parsed = JSON.parse(myObject);
+            
+            var nome = parsed[0].nome;
+            var id = parsed[0].id;
+            
+            teste.innerHTML = nome;
+            idCidade.innerHTML = id;
+
+        });
+
+    </script>
+</body>
+
+</html>
